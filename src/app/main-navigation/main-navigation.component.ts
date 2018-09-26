@@ -8,6 +8,20 @@ import { MenuItem } from 'primeng/api';
 export class MainNavigationComponent implements OnInit {
 
   items: MenuItem[];
+  displayLogin: boolean = false;
+  displaySignup: boolean = false;
+
+    showDialog( buttonType) {
+      if(buttonType ==='login'){
+        this.displaySignup = false;
+        this.displayLogin = true;
+      }        
+      else{
+        this.displaySignup = true;
+        this.displayLogin = false;
+      } 
+    }
+
   constructor() { }
 
   ngOnInit() {
