@@ -12,6 +12,8 @@ import { HomeComponent } from './home/home.component';
 import { MainNavigationComponent } from './main-navigation/main-navigation.component';
 import { MovieDetailsComponent } from './movie-details/movie-details.component';
 import {DialogModule} from 'primeng/dialog';
+import { SignupComponent } from './signup/signup.component';
+import { SigninComponent } from './signin/signin.component';
 const routes: Routes = [
   { path: '', component: LoginComponent },
   { path: '', children: [
@@ -25,7 +27,9 @@ const routes: Routes = [
     LoginComponent,
     HomeComponent,
     MainNavigationComponent,
-    MovieDetailsComponent
+    MovieDetailsComponent,
+    SignupComponent,
+    SigninComponent
   ],
   imports: [
     BrowserModule,
