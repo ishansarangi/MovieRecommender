@@ -14,6 +14,9 @@ import { MovieDetailsComponent } from './movie-details/movie-details.component';
 import {DialogModule} from 'primeng/dialog';
 import { SignupComponent } from './signup/signup.component';
 import { SigninComponent } from './signin/signin.component';
+import {PasswordModule} from 'primeng/password';
+import {CalendarModule} from 'primeng/calendar';
+import {KeyFilterModule} from 'primeng/keyfilter';
 const routes: Routes = [
   { path: '', component: LoginComponent },
   { path: '', children: [
@@ -39,6 +42,9 @@ const routes: Routes = [
      ButtonModule,
      InputTextModule,
      DialogModule,
+     PasswordModule,
+     CalendarModule,
+     KeyFilterModule,
      RouterModule.forRoot(routes) 
   ],
   providers: [],
