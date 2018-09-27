@@ -10,18 +10,10 @@ export class HomeNavigationComponent implements OnInit {
 
   
   items: MenuItem[];
-  displayLogin: boolean = false;
-  displaySignup: boolean = false;
+  displayProfile: boolean = false;
 
-    showDialog( buttonType) {
-      if(buttonType ==='login'){
-        this.displaySignup = false;
-        this.displayLogin = true;
-      }        
-      else{
-        this.displaySignup = true;
-        this.displayLogin = false;
-      } 
+  showProfile( ) {
+    this.displayProfile = true;
     }
 
   constructor() { }
