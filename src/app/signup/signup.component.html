@@ -1,0 +1,72 @@
+<div class = "container-fluid mainContainer" style="padding-top:1em;">
+  <div class="row">
+    <div class="col-sm-10 col-md-10 col-lg-10 col-xl-10">
+        <span class="ui-float-label" >
+            <input id="float-input-fName" type="text" size="35" pKeyFilter="alpha" pInputText> 
+            <label for="float-input-fName">First Name</label>
+        </span>
+    </div>
+  </div>
+  <div class="row" style="padding-top:1.5em;">
+      <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
+          <span class="ui-float-label" >
+              <input id="float-input-lName" type="text" size="35" pKeyFilter="alpha" pInputText> 
+              <label for="float-input-lName">Last Name</label>
+          </span>
+      </div>
+    </div>
+    <div class="row" style="padding-top:1.5em;">
+        <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
+            <span class="ui-float-label" >
+                <input id="float-input-email" type="text" size="35"  pKeyFilter="email" pInputText> 
+                <label for="float-input-email">Email</label>
+            </span>
+        </div>
+      </div>
+    <div class="row" style="padding-top:1.5em;">
+        <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
+            <span class="ui-float-label" >
+                <input id="float-input-uName" type="text" size="35" pKeyFilter="alphanum" pInputText> 
+                <label for="float-inpu-uName">User Name</label>
+            </span>
+        </div>
+      </div>
+      <div class="row" style="padding-top:1.5em;">
+          <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
+              <span class="ui-float-label" >
+                  <input pPassword id="float-input-pwd" type="password" size="35" pInputText> 
+                  <label for="float-input-pwd">Password</label>
+              </span>
+          </div>
+      </div>
+      
+      <div class="row" style="padding-top:1.5em;">
+          <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
+              <span class="ui-float-label" >
+                  <input id="float-input-cc" type="text" size="35" pInputText> 
+                  <label for="float-input-cc">Country Code</label>
+              </span>
+          </div>
+      </div>
+      <div class="row" style="padding-top:1.5em;">
+          <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
+              <span class="ui-float-label" >
+                  <input id="float-input-mob" type="text" size="35" pKeyFilter="pint" pInputText> 
+                  <label for="float-input-mob">Mobile</label>
+              </span>
+          </div>
+      </div>
+      <div class="row" style="padding-top:1.5em;">
+          <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
+              <span class="ui-float-label" >
+              <p-calendar id="float-input-dob" [(ngModel)]="dateOfBirth" [monthNavigator]="true" [yearNavigator]="true" yearRange="1900:2018"></p-calendar>
+              <label for="float-input-dob">Date Of Birth</label>
+              </span>
+          </div>
+      </div>
+      <div class="row" style="padding-top:1.5em;">
+          <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+              <button pButton type="button" label="Submit"></button>
+          </div>
+      </div>
+</div>
