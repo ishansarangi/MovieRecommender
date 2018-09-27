@@ -1,3 +1,4 @@
+
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -17,6 +18,7 @@ import { SigninComponent } from './signin/signin.component';
 import {PasswordModule} from 'primeng/password';
 import {CalendarModule} from 'primeng/calendar';
 import {KeyFilterModule} from 'primeng/keyfilter';
+import { HomeNavigationComponent } from './home-navigation/home-navigation.component';
 const routes: Routes = [
   { path: '', component: LoginComponent },
   { path: '', children: [
@@ -32,7 +34,8 @@ const routes: Routes = [
     MainNavigationComponent,
     MovieDetailsComponent,
     SignupComponent,
-    SigninComponent
+    SigninComponent,
+    HomeNavigationComponent
   ],
   imports: [
     BrowserModule,
@@ -51,3 +54,4 @@ const routes: Routes = [
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
