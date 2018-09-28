@@ -19,6 +19,7 @@ import {PasswordModule} from 'primeng/password';
 import {CalendarModule} from 'primeng/calendar';
 import {KeyFilterModule} from 'primeng/keyfilter';
 import { HomeNavigationComponent } from './home-navigation/home-navigation.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 const routes: Routes = [
   { path: '', component: LoginComponent },
   { path: '', children: [
@@ -35,7 +36,8 @@ const routes: Routes = [
     MovieDetailsComponent,
     SignupComponent,
     SigninComponent,
-    HomeNavigationComponent
+    HomeNavigationComponent,
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +50,7 @@ const routes: Routes = [
      PasswordModule,
      CalendarModule,
      KeyFilterModule,
-     RouterModule.forRoot(routes) 
+     RouterModule.forRoot(routes,{onSameUrlNavigation: 'reload'}) 
   ],
   providers: [],
   bootstrap: [AppComponent]

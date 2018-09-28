@@ -1,11 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-signup',
-  templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.css']
+  selector: 'app-user-profile',
+  templateUrl: './user-profile.component.html',
+  styleUrls: ['./user-profile.component.css']
 })
-export class SignupComponent implements OnInit {
+export class UserProfileComponent implements OnInit {
+
+  constructor() { }
+
   dateOfBirth: String = "";
   firstName: String = "";
   lastName: String = "";
@@ -17,10 +20,18 @@ export class SignupComponent implements OnInit {
   display: boolean = false;
   userMessage: String = "";
   validated: boolean = false;
-  constructor() { }
-  showDialog() {
+  editProfile: boolean = true;
+  visibleEdit: boolean = true;
+  visibleSubmit: boolean = false;
+  buttonName: String = "Edit Profile";
+  editProfileFields(){
+    this.visibleEdit = false;
+    this.visibleSubmit = true;
+    this.editProfile = false;
+  }
+  profileValidation() {
     console.log(this.userMessage);
-    this.display = false;
+    
     this.userMessage = "";
     if (this.mobile.length != 10) {
       this.display = true;
@@ -67,10 +78,11 @@ export class SignupComponent implements OnInit {
       
     }
   }
-  ngOnInit() {
-  }
   validateEmail(email) {
     var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(String(email).toLowerCase());
   }
+  ngOnInit() {
+  }
+
 }
