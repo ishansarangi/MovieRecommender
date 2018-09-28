@@ -66,12 +66,18 @@
           </span>
       </div>
   </div>
-  <div class="row" style="padding-top:1.5em;">
+  <div *ngIf = "visibleEdit" class="row" style="padding-top:1.5em;">
       <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-          <button pButton type="button" (click)="showDialog()" label="Edit Profile">
+          <button pButton type="button" (click)="editProfileFields()" label="Edit Profile">
           </button>
       </div>
   </div>
+  <div *ngIf = "visibleSubmit" class="row" style="padding-top:1.5em;">
+    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+        <button pButton type="button" (click)="profileValidation()" label="Submit">
+        </button>
+    </div>
+</div>
 </div>
 <p-dialog [(visible)]="display" [modal]=true [showHeader]="false">
   {{userMessage}}
