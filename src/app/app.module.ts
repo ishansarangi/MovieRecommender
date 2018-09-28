@@ -48,7 +48,7 @@ const routes: Routes = [
      PasswordModule,
      CalendarModule,
      KeyFilterModule,
-     RouterModule.forRoot(routes) 
+     RouterModule.forRoot(routes,{onSameUrlNavigation: 'reload'}) 
   ],
   providers: [],
   bootstrap: [AppComponent]
