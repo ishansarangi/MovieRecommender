@@ -28,36 +28,46 @@ export class SignupComponent implements OnInit {
       console.log("mobile");
 
     }
+
     // else if (this.countryCode.length == 0) {
     //   this.display = true;
     //   this.userMessage = "Please enter a valid CountryCode!";
     //   console.log("cc");
     // }
     else if (this.user.firstName.length == 0) {
+
       this.display = true;
       this.userMessage = "Please enter a valid FirstName!";
       console.log("fn");
     }
+
     else if (this.user.lastName.length == 0) {
+
       this.display = true;
       this.userMessage = "Please enter a valid LastName!";
       console.log("ln");
     }
+
     else if (this.user.userName.length == 0) {
+
       this.display = true;
       this.userMessage = "Please enter a valid UserName!";
       console.log("un");
     }
+
     else if (!this.validateEmail(this.user.userEmailId) || this.user.userEmailId.length == 0) {
+
       this.display = true;
       this.userMessage = "Please enter a valid email!";
       console.log("mid");
     }
+
     else if (this.user.userPassword.length == 0) {
       this.display = true;
       this.userMessage = "Please enter a valid Password!";
       console.log("pwd");
     } else if (this.user.userDOB.length == 0) {
+
       this.display = true;
       this.userMessage = "Please enter a valid Date Of Birth!";
       console.log("dob");
@@ -81,8 +91,10 @@ export class SignupComponent implements OnInit {
         
       )
       
+
     }
   }
+  
   ngOnInit() {
   }
 
