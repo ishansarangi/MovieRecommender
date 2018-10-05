@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from '../model/user';
+import { RegisterUserService } from '../services/register-user.service';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-signup',
@@ -6,69 +10,82 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
-  dateOfBirth: String = "";
-  firstName: String = "";
-  lastName: String = "";
-  email: String = "";
-  userName: String = "";
-  password: String = "";
-  countryCode: String = "";
-  mobile: String = "";
+  user: User = new User();
+
   display: boolean = false;
   userMessage: String = "";
   validated: boolean = false;
-  constructor() { }
+  constructor(private api: RegisterUserService, private router:Router) { }
+
   showDialog() {
     console.log(this.userMessage);
+    
     this.display = false;
     this.userMessage = "";
-    if (this.mobile.length != 10) {
+    if (this.user.userContactNo.length != 10) {
       this.display = true;
       this.userMessage = "Please enter a 10 digit Mobile Number!";
       console.log("mobile");
+
     }
-    else if (this.countryCode.length == 0) {
-      this.display = true;
-      this.userMessage = "Please enter a valid CountryCode!";
-      console.log("cc");
-    }
-    else if (this.firstName.length == 0) {
+    // else if (this.countryCode.length == 0) {
+    //   this.display = true;
+    //   this.userMessage = "Please enter a valid CountryCode!";
+    //   console.log("cc");
+    // }
+    else if (this.user.firstName.length == 0) {
       this.display = true;
       this.userMessage = "Please enter a valid FirstName!";
       console.log("fn");
     }
-    else if (this.lastName.length == 0) {
+    else if (this.user.lastName.length == 0) {
       this.display = true;
       this.userMessage = "Please enter a valid LastName!";
       console.log("ln");
     }
-    else if (this.userName.length == 0) {
+    else if (this.user.userName.length == 0) {
       this.display = true;
       this.userMessage = "Please enter a valid UserName!";
       console.log("un");
     }
-    else if (!this.validateEmail(this.email) || this.email.length == 0) {
+    else if (!this.validateEmail(this.user.userEmailId) || this.user.userEmailId.length == 0) {
       this.display = true;
-      this.userMessage = "Please enter a valid MailId!";
+      this.userMessage = "Please enter a valid email!";
       console.log("mid");
     }
-    else if (this.password.length == 0) {
+    else if (this.user.userPassword.length == 0) {
       this.display = true;
       this.userMessage = "Please enter a valid Password!";
       console.log("pwd");
-    } else if (this.dateOfBirth.length == 0) {
+    } else if (this.user.userDOB.length == 0) {
       this.display = true;
       this.userMessage = "Please enter a valid Date Of Birth!";
       console.log("dob");
     }
     else {
-      this.display = true;
-      this.userMessage = "User Entered to System. Please LogIn.";
+      this.api.registerUser(this.user).subscribe(
+        response => {
+          if (response.success){
+            console.log(response);
+            this.router.navigateByUrl('/home');
+          }
+
+          else{
+            console.log(response);
+          }
+        },
+        responseError => {
+          this.display = true;
+          this.userMessage = "Server error: Registration failed!";
+        }
+        
+      )
       
     }
   }
   ngOnInit() {
   }
+
   validateEmail(email) {
     var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(String(email).toLowerCase());
