@@ -88,10 +88,7 @@ export class SignupComponent implements OnInit {
           this.display = true;
           this.userMessage = "Server error: Registration failed!";
         }
-        
       )
-      
-
     }
   }
   
