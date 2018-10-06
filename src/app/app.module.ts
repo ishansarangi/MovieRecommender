@@ -21,6 +21,9 @@ import {KeyFilterModule} from 'primeng/keyfilter';
 import { HomeNavigationComponent } from './home-navigation/home-navigation.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { HttpClientModule } from '@angular/common/http';
+import {CardModule} from 'primeng/card';
+import {CarouselModule} from 'primeng/carousel';
+
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -53,6 +56,8 @@ const routes: Routes = [
      CalendarModule,
      KeyFilterModule,
      HttpClientModule,
+     CardModule,
+     CarouselModule,
      RouterModule.forRoot(routes,{onSameUrlNavigation: 'reload'}) 
   ],
   providers: [],
