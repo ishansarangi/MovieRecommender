@@ -19,21 +19,9 @@ export class RegisterUserService {
   constructor(private http:HttpClient) { }
 
   registerUser(user):Observable<Login>{
-    let body = new HttpParams();
-    body.append('firstName',user.firstName)
-    body.append('lastName',user.lastName)
-    body.append('userName',user.userName)
-    body.append('userPassword',user.userPassword)
-    body.append('userEmailId',user.userEmailId)
-    body.append('userContactNo',user.userContactNo)
-    //body.append('userCity',user.userCity)
-    body.append('userDOB',user.userDOB)
-   // body.append('userAddress',user.userAddress)
-   //body.append('userPinCode',user.userPinCode)
 
     let headers = new HttpHeaders();
     headers.set('Content-Type', 'application/json');
-    
-    return this.http.post<Login>('http://localhost:8081/register/user/newUser', body, this.httpOptions);
+    return this.http.post<Login>('http://localhost:8081/register/user/newUser', user, this.httpOptions);
   }
 }
