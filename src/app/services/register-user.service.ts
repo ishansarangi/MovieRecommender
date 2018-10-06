@@ -22,6 +22,6 @@ export class RegisterUserService {
 
     let headers = new HttpHeaders();
     headers.set('Content-Type', 'application/json');
-    return this.http.post<Login>('http://localhost:8081/register/user/newUser', user, this.httpOptions);
+    return this.http.post<Login>('http://web:8081/register/user/newUser', user, this.httpOptions);
   }
 }
