@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-sm-10 col-md-10 col-lg-10 col-xl-10">
             <span class="ui-float-label">
-                <input id="float-input-fName" [(ngModel)]="firstName" type="text" size="35" pKeyFilter="alpha" pInputText>
+                <input id="float-input-fName" [(ngModel)]="user.firstName" type="text" size="35" pKeyFilter="alpha" pInputText>
                 <label for="float-input-fName">First Name</label>
             </span>
         </div>
@@ -10,7 +10,7 @@
     <div class="row" style="padding-top:1.5em;">
         <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
             <span class="ui-float-label">
-                <input id="float-input-lName" [(ngModel)]="lastName"  type="text" size="35" pKeyFilter="alpha" pInputText>
+                <input id="float-input-lName" [(ngModel)]="user.lastName"  type="text" size="35" pKeyFilter="alpha" pInputText>
                 <label for="float-input-lName">Last Name</label>
             </span>
         </div>
@@ -18,7 +18,7 @@
     <div class="row" style="padding-top:1.5em;">
         <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
             <span class="ui-float-label">
-                <input id="float-input-email" [(ngModel)]="email" type="email" size="35" pKeyFilter="email" pInputText>
+                <input id="float-input-email" [(ngModel)]="user.userEmailId" type="email" size="35" pKeyFilter="email" pInputText>
                 <label for="float-input-email">Email</label>
             </span>
         </div>
@@ -26,7 +26,7 @@
     <div class="row" style="padding-top:1.5em;">
         <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
             <span class="ui-float-label">
-                <input id="float-input-uName" [(ngModel)]="userName" type="text" size="35" pKeyFilter="alphanum" pInputText>
+                <input id="float-input-uName" [(ngModel)]="user.userName" type="text" size="35" pKeyFilter="alphanum" pInputText>
                 <label for="float-input-uName">User Name</label>
             </span>
         </div>
@@ -34,7 +34,7 @@
     <div class="row" style="padding-top:1.5em;">
         <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
             <span class="ui-float-label">
-                <input pPassword id="float-input-pwd" [(ngModel)]="password" type="password" size="35" pInputText>
+                <input pPassword id="float-input-pwd" [(ngModel)]="user.userPassword" type="password" size="35" pInputText>
                 <label for="float-input-pwd">Password</label>
             </span>
         </div>
@@ -51,7 +51,7 @@
     <div class="row" style="padding-top:1.5em;">
         <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
             <span class="ui-float-label">
-                <input id="float-input-mob" required="true" minlength="10" maxlength="10" [(ngModel)]="mobile" type="text"
+                <input id="float-input-mob" required="true" minlength="10" maxlength="10" [(ngModel)]="user.userContactNo" type="text"
                     size="35" pKeyFilter="pint" pInputText>
                 <label for="float-input-mob">Mobile</label>
             </span>
@@ -60,7 +60,7 @@
     <div class="row" style="padding-top:1.5em;">
         <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
             <span class="ui-float-label">
-                <p-calendar id="float-input-dob" [(ngModel)]="dateOfBirth" [monthNavigator]="true" [yearNavigator]="true"
+                <p-calendar id="float-input-dob" [(ngModel)]="user.userDOB" [monthNavigator]="true" [yearNavigator]="true"
                     yearRange="1900:2018"></p-calendar>
                 <label for="float-input-dob">Date Of Birth</label>
             </span>

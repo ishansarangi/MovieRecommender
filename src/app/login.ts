@@ -1,4 +1,5 @@
 export class Login {
-    name: String;
-    password: String;
+    statusCode: number;
+    success: String;
+    errorReason: String;
 }
