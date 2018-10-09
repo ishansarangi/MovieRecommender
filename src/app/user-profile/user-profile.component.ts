@@ -83,6 +83,8 @@ export class UserProfileComponent implements OnInit {
     return re.test(String(email).toLowerCase());
   }
   ngOnInit() {
+   this.userName= localStorage.getItem('currentUser');
+   console.log(this.userName);
   }
 
 }
