@@ -6,4 +6,7 @@ export class User {
     userPassword: String;
     userContactNo: String;
     userDOB: String;
+    userAddress: String;
+    userCity: String;
+    userPinCode: String;
 }
