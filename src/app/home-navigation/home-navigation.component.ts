@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api';
+import { ViewProfileService } from '../services/view-profile.service';
 
 @Component({
   selector: 'app-home-navigation',
@@ -11,9 +12,11 @@ export class HomeNavigationComponent implements OnInit {
   
   items: MenuItem[];
   displayProfile: boolean = false;
-
+  profileService : ViewProfileService;
   showProfile( ) {
     this.displayProfile = true;
+    this.profileService.fetchUserDetails();
+    console.log("Fetched.");
     }
 
   constructor() { }
