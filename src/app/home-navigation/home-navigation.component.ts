@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home-navigation',
@@ -14,9 +15,10 @@ export class HomeNavigationComponent implements OnInit {
 
   showProfile( ) {
     this.displayProfile = true;
-    }
+    console.log("Fetched.");
+  }
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
     this.items = [
@@ -31,6 +33,13 @@ export class HomeNavigationComponent implements OnInit {
           disabled: true
       }
     ];
-}
+  }
+
+  //Clear the session
+  logOut(){
+    localStorage.removeItem('currentUser');
+    this.router.navigateByUrl('/');
+
+  }
 
 }
