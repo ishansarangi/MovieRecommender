@@ -24,7 +24,7 @@
     border-width: 2.5px;
     border-color: rgb(212, 210, 210);
     border-style: solid;
-    background-image: url("src/assets/MovieBackground.jpg");
+    background-image: url("/src/assets/MovieBackground.jpg");
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;

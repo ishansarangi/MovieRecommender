@@ -2,8 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { Login } from '../login';
-import { HttpParams } from '@angular/common/http';
-import { HttpParamsOptions } from '@angular/common/http/src/params';
 
 
 @Injectable({
@@ -20,7 +18,7 @@ export class RegisterUserService {
 
   registerUser(user):Observable<Login>{
 
-    let headers = new HttpHeaders();
+    var headers = new HttpHeaders();
     headers.set('Content-Type', 'application/json');
     return this.http.post<Login>('http://web:8081/register/user/newUser', user, this.httpOptions);
   }

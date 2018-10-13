@@ -14,7 +14,7 @@ export class MovieDetailsComponent implements OnInit {
     this.getMovies.fetchMovies()
                   .subscribe(
                     r=>{
-                      this.movies = r["results"];
+                      this.movies = r["movies"];
                       console.log(this.movies);
                     }
                   )
