@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from '../model/user';
+import { ViewProfileService } from '../services/view-profile.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-profile',
@@ -7,7 +10,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserProfileComponent implements OnInit {
 
-  constructor() { }
+  constructor(private api: ViewProfileService, private router:Router) { }
+
+  user: User = new User();
 
   dateOfBirth: String = "";
   firstName: String = "";
@@ -29,62 +34,86 @@ export class UserProfileComponent implements OnInit {
     this.visibleSubmit = true;
     this.editProfile = false;
   }
+
   profileValidation() {
     console.log(this.userMessage);
     
     this.userMessage = "";
-    if (this.mobile.length != 10) {
+   if (this.user.userContactNo.length != 10) {
       this.display = true;
       this.userMessage = "Please enter a 10 digit Mobile Number!";
       console.log("mobile");
+
     }
-    else if (this.countryCode.length == 0) {
-      this.display = true;
-      this.userMessage = "Please enter a valid CountryCode!";
-      console.log("cc");
-    }
-    else if (this.firstName.length == 0) {
+    else if (this.user.firstName.length == 0) {
+
       this.display = true;
       this.userMessage = "Please enter a valid FirstName!";
       console.log("fn");
     }
-    else if (this.lastName.length == 0) {
+
+    else if (this.user.lastName.length == 0) {
+
       this.display = true;
       this.userMessage = "Please enter a valid LastName!";
       console.log("ln");
     }
-    else if (this.userName.length == 0) {
+
+    else if (this.user.userName.length == 0) {
+
       this.display = true;
       this.userMessage = "Please enter a valid UserName!";
       console.log("un");
     }
-    else if (!this.validateEmail(this.email) || this.email.length == 0) {
+
+    else if (!this.validateEmail(this.user.userEmailId) || this.user.userEmailId.length == 0) {
+
       this.display = true;
-      this.userMessage = "Please enter a valid MailId!";
+      this.userMessage = "Please enter a valid email!";
       console.log("mid");
     }
-    else if (this.password.length == 0) {
-      this.display = true;
-      this.userMessage = "Please enter a valid Password!";
-      console.log("pwd");
-    } else if (this.dateOfBirth.length == 0) {
-      this.display = true;
-      this.userMessage = "Please enter a valid Date Of Birth!";
-      console.log("dob");
-    }
+
+    //TODO: Make date comparison for age and empty date
+    
+    // else if (this.user.userDOB.length == 0) {
+
+    //   this.display = true;
+    //   this.userMessage = "Please enter a valid Date Of Birth!";
+    //   console.log("dob");
+    // }
     else {
       this.display = true;
       this.userMessage = "User Entered to System. Please LogIn.";
       
     }
   }
+
   validateEmail(email) {
     var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(String(email).toLowerCase());
   }
+  
   ngOnInit() {
    this.userName= localStorage.getItem('currentUser');
    console.log(this.userName);
+    this.api.fetchUserDetails().subscribe(
+      response => {
+        if (response){
+          console.log(response);
+          this.user = response;
+          this.user.userDOB = new Date(this.user.userDOB)
+          }
+
+        else{
+          console.log(response);
+        }
+      },
+      responseError => {
+        this.display = true;
+        this.userMessage = "Server error: Something went wrong!";
+      }
+    )
+
   }
 
 }
