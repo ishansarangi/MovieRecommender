@@ -11,9 +11,9 @@ export class HomeNavigationComponent implements OnInit {
   
   items: MenuItem[];
   displayProfile: boolean = false;
-
   showProfile( ) {
     this.displayProfile = true;
+    console.log("Fetched.");
     }
 
   constructor() { }

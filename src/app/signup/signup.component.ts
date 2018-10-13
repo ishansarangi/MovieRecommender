@@ -66,17 +66,24 @@ export class SignupComponent implements OnInit {
       this.display = true;
       this.userMessage = "Please enter a valid Password!";
       console.log("pwd");
-    } else if (this.user.userDOB.length == 0) {
+    } 
 
-      this.display = true;
-      this.userMessage = "Please enter a valid Date Of Birth!";
-      console.log("dob");
-    }
+    //TODO: Make date comparison for age and empty date
+
+    // else 
+    // if (this.user.userDOB.) {
+
+    //   this.display = true;
+    //   this.userMessage = "Please enter a valid Date Of Birth!";
+    //   console.log("dob");
+    // }
     else {
       this.api.registerUser(this.user).subscribe(
         response => {
           if (response.success){
             console.log(response);
+            localStorage.setItem('currentUser', this.user.userName);
+            console.log(localStorage.getItem('currentUser'));
             this.router.navigateByUrl('/home');
           }
 
