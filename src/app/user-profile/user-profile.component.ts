@@ -10,36 +10,46 @@ import { Router } from '@angular/router';
 })
 export class UserProfileComponent implements OnInit {
 
-  constructor(private api: ViewProfileService, private router:Router) { }
-
   user: User = new User();
 
-  dateOfBirth: String = "";
-  firstName: String = "";
-  lastName: String = "";
-  email: String = "";
-  userName: String = "";
-  password: String = "";
-  countryCode: String = "";
-  mobile: String = "";
   display: boolean = false;
   userMessage: String = "";
   validated: boolean = false;
-  editProfile: boolean = true;
-  visibleEdit: boolean = true;
-  visibleSubmit: boolean = false;
+
+  isEditing: boolean = false;
+  isSubmitVisible: boolean = false;
+  
   buttonName: String = "Edit Profile";
-  editProfileFields(){
-    this.visibleEdit = false;
-    this.visibleSubmit = true;
-    this.editProfile = false;
+
+  constructor(private api: ViewProfileService, private router: Router) { }
+
+  ngOnInit() {
+    this.api.fetchUserDetails().subscribe(
+      response => {
+        if (response) {
+          this.user = response;
+          this.user.userDOB = new Date(this.user.userDOB)
+        } 
+        console.log(response);
+      },
+      responseError => {
+        this.display = true;
+        this.userMessage = "Server error: Something went wrong!";
+      }
+    )
+
+  }
+
+  editProfileFields() {
+    this.isSubmitVisible = true;
+    this.isEditing = true;
   }
 
   profileValidation() {
     console.log(this.userMessage);
-    
+
     this.userMessage = "";
-   if (this.user.userContactNo.length != 10) {
+    if (this.user.userContactNo.length != 10) {
       this.display = true;
       this.userMessage = "Please enter a 10 digit Mobile Number!";
       console.log("mobile");
@@ -74,7 +84,7 @@ export class UserProfileComponent implements OnInit {
     }
 
     //TODO: Make date comparison for age and empty date
-    
+
     // else if (this.user.userDOB.length == 0) {
 
     //   this.display = true;
@@ -82,38 +92,29 @@ export class UserProfileComponent implements OnInit {
     //   console.log("dob");
     // }
     else {
-      this.display = true;
-      this.userMessage = "User Entered to System. Please LogIn.";
-      
+      this.api.editProfileWith(this.user).subscribe(
+        response => {
+          if (response.success) {
+            console.log(response);
+            this.display = true;
+            this.userMessage = "User details updated successfully!";
+          }
+
+          else {
+            console.log(response);
+          }
+        },
+        responseError => {
+          this.display = true;
+          this.userMessage = "Server error: Registration failed!";
+        }
+      )
     }
   }
 
   validateEmail(email) {
     var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(String(email).toLowerCase());
-  }
-  
-  ngOnInit() {
-   this.userName= localStorage.getItem('currentUser');
-   console.log(this.userName);
-    this.api.fetchUserDetails().subscribe(
-      response => {
-        if (response){
-          console.log(response);
-          this.user = response;
-          this.user.userDOB = new Date(this.user.userDOB)
-          }
-
-        else{
-          console.log(response);
-        }
-      },
-      responseError => {
-        this.display = true;
-        this.userMessage = "Server error: Something went wrong!";
-      }
-    )
-
   }
 
 }

@@ -21,4 +21,11 @@ export class ViewProfileService {
     return this.http.get<User>('http://localhost:8081/profile/fetch/'+userName, this.httpOptions);
   }
 
+  editProfileWith(user: User):Observable<Login>{
+    
+    var headers = new HttpHeaders();
+    headers.set('Content-Type', 'application/json');
+    console.log(user);
+    return this.http.post<Login>('http://localhost:8081/register/user/editUser', user, this.httpOptions);
+  }
 }
