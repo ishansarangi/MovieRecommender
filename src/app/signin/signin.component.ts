@@ -21,10 +21,8 @@ export class SigninComponent implements OnInit {
   performLogin(){
     this.errorMessage = '';
     this.hasError = false;
-  
     this.validateUserName();
     this.validatePassword();
-
     if (!this.hasError){
       this.api.login(
         this.username,
@@ -35,6 +33,8 @@ export class SigninComponent implements OnInit {
             console.log(r)
             if (r.success) {
               console.log(r)
+              localStorage.setItem('currentUser', this.username);
+              console.log(localStorage.getItem('currentUser'));
               this.router.navigateByUrl('/home');
             } else {
               alert(r.errorReason);

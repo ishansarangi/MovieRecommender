@@ -39,15 +39,6 @@
             </span>
         </div>
     </div>
-
-    <div class="row" style="padding-top:1.5em;">
-        <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
-            <span class="ui-float-label">
-                <input id="float-input-cc" [(ngModel)]="countryCode" pKeyFilter="pint" type="text" size="35" pInputText>
-                <label for="float-input-cc">Country Code</label>
-            </span>
-        </div>
-    </div>
     <div class="row" style="padding-top:1.5em;">
         <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
             <span class="ui-float-label">
@@ -63,6 +54,31 @@
                 <p-calendar id="float-input-dob" [(ngModel)]="user.userDOB" [monthNavigator]="true" [yearNavigator]="true"
                     yearRange="1900:2018"></p-calendar>
                 <label for="float-input-dob">Date Of Birth</label>
+            </span>
+        </div>
+    </div>
+    <div class="row" style="padding-top:1.5em;">
+        <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
+            <span class="ui-float-label">
+                <input id="float-input-uName" [(ngModel)]="user.userAddress" type="text" size="35" pKeyFilter="alphanum" pInputText>
+                <label for="float-input-uName">Address</label>
+            </span>
+        </div>
+    </div>
+    <div class="row" style="padding-top:1.5em;">
+        <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
+            <span class="ui-float-label">
+                <input id="float-input-uName" [(ngModel)]="user.userCity" type="text" size="35" pKeyFilter="alphanum" pInputText>
+                <label for="float-input-uName">City</label>
+            </span>
+        </div>
+    </div>
+    <div class="row" style="padding-top:1.5em;">
+        <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
+            <span class="ui-float-label">
+                <input id="float-input-mob" required="true" minlength="5" maxlength="5" [(ngModel)]="user.userPinCode" type="text"
+                    size="35" pKeyFilter="pint" pInputText>
+                <label for="float-input-mob">Zip</label>
             </span>
         </div>
     </div>

@@ -7,7 +7,7 @@ import { Observable, of } from 'rxjs';
 })
 export class GetMoviesService {
 
-  endPoint = 'http://web:8081/api/getMovies';
+  endPoint = 'http://localhost:8081/api/getMovies';
   httpOptions = {
     headers: new HttpHeaders({ 'Authorization': 'Basic bW92aWVyZWNvbW1lbmRlcjpzM2N1ciFU' })
   };
