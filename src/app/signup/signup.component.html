@@ -1,7 +1,8 @@
 <form (submit)="onRegisterSubmit()">
     <div class="form-group">
         <div class="container-fluid">
-            <div class="row">
+            <div class="row showError">
+                {{validationMessage}}
             </div>
             <div class="row">
                 <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4">

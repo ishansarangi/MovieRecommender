@@ -11,17 +11,13 @@ import { Router } from '@angular/router';
 })
 export class SignupComponent implements OnInit {
   user: User = new User();
-  
+  validationMessage: String;
   display: boolean = false;
   userMessage: String = "";
   validated: boolean = false;
   constructor(private api: RegisterUserService, private router:Router) { }
   onRegisterSubmit(){
     console.log(this.user);
-    
-  }
-  showDialog() {
-    console.log(this.userMessage);
     
     this.display = false;
     this.userMessage = "";
@@ -52,7 +48,7 @@ export class SignupComponent implements OnInit {
       console.log("un");
     }
 
-    else if (!this.validateEmail(this.user.userEmailId) || this.user.userEmailId.length == 0) {
+    else if (!this.validateEmail() || this.user.userEmailId.length == 0) {
 
       this.display = true;
       this.userMessage = "Please enter a valid email!";
@@ -63,18 +59,7 @@ export class SignupComponent implements OnInit {
       this.display = true;
       this.userMessage = "Please enter a valid Password!";
       console.log("pwd");
-    } 
-
-    //TODO: Make date comparison for age and empty date
-
-    // else 
-    // if (this.user.userDOB.) {
-
-    //   this.display = true;
-    //   this.userMessage = "Please enter a valid Date Of Birth!";
-    //   console.log("dob");
-    // }
-    else {
+    } else {
       this.api.registerUser(this.user).subscribe(
         response => {
           if (response.success){
@@ -94,13 +79,30 @@ export class SignupComponent implements OnInit {
         }
       )
     }
+
+
+  }
+  showDialog() {
+    console.log(this.userMessage);
+    
+    //TODO: Make date comparison for age and empty date
+
+    // else 
+    // if (this.user.userDOB.) {
+
+    //   this.display = true;
+    //   this.userMessage = "Please enter a valid Date Of Birth!";
+    //   console.log("dob");
+    // }
+    
   }
   
   ngOnInit() {
   }
 
-  validateEmail(email) {
+  validateEmail() {
     var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return re.test(String(email).toLowerCase());
+    return re.test(String(this.user.userEmailId).toLowerCase());
+
   }
 }
