@@ -35,7 +35,7 @@ export class SigninComponent implements OnInit {
               console.log(r)
               localStorage.setItem('currentUser', this.username);
               console.log(localStorage.getItem('currentUser'));
-              this.router.navigateByUrl('/home');
+              this.router.navigateByUrl('/home/movies');
             } else {
               alert(r.errorReason);
             }
