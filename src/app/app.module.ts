@@ -23,7 +23,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 import { HttpClientModule } from '@angular/common/http';
 import {CardModule} from 'primeng/card';
 import {CarouselModule} from 'primeng/carousel';
-
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -58,6 +58,7 @@ const routes: Routes = [
      HttpClientModule,
      CardModule,
      CarouselModule,
+     NgbModule,
      RouterModule.forRoot(routes,{onSameUrlNavigation: 'reload'}) 
   ],
   providers: [],

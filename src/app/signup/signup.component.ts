@@ -11,12 +11,15 @@ import { Router } from '@angular/router';
 })
 export class SignupComponent implements OnInit {
   user: User = new User();
-
+  
   display: boolean = false;
   userMessage: String = "";
   validated: boolean = false;
   constructor(private api: RegisterUserService, private router:Router) { }
-
+  onRegisterSubmit(){
+    console.log(this.user);
+    
+  }
   showDialog() {
     console.log(this.userMessage);
     
@@ -28,12 +31,6 @@ export class SignupComponent implements OnInit {
       console.log("mobile");
 
     }
-
-    // else if (this.countryCode.length == 0) {
-    //   this.display = true;
-    //   this.userMessage = "Please enter a valid CountryCode!";
-    //   console.log("cc");
-    // }
     else if (this.user.firstName.length == 0) {
 
       this.display = true;
