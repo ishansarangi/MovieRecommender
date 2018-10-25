@@ -23,7 +23,8 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CardModule } from 'primeng/card';
 import { CarouselModule } from 'primeng/carousel';
-
+import { ShowtimesComponent } from './showtimes/showtimes.component';
+import { DataViewModule } from 'primeng/dataview';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -31,7 +32,8 @@ const routes: Routes = [
     path: '', children: [
       {
         path: 'home', component: HomeComponent, children: [
-          { path: 'movies', component: MovieDetailsComponent }
+          { path: 'movies', component: MovieDetailsComponent },
+          { path: 'showtimes', component: ShowtimesComponent }
         ]
       }
     ]
@@ -49,7 +51,8 @@ const routes: Routes = [
     SignupComponent,
     SigninComponent,
     HomeNavigationComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    ShowtimesComponent
   ],
   imports: [
     BrowserModule,
@@ -65,6 +68,7 @@ const routes: Routes = [
     HttpClientModule,
     CardModule,
     CarouselModule,
+    DataViewModule,
     RouterModule.forRoot(routes, { onSameUrlNavigation: 'reload' })
   ],
   providers: [],

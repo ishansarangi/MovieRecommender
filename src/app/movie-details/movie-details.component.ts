@@ -24,9 +24,9 @@ export class MovieDetailsComponent implements OnInit {
   hasError: boolean;
   ngOnInit() {
   }
-  routeMovie(movieName){
-    console.log(movieName);
+  routeMovie(id){
+    console.log(id);
     //Call the Service to fetch the showtimes and other movie details and store it in the local storage after clearing the cookies
-    this.router.navigateByUrl('/movieShowtimes');
+    this.router.navigateByUrl('/home/showtimes');
   }
 }
