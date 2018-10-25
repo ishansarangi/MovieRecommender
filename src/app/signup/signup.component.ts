@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../model/user';
 import { RegisterUserService } from '../services/register-user.service';
 import { Router } from '@angular/router';
-
+import { FlashMessagesService } from 'angular2-flash-messages'
 
 @Component({
   selector: 'app-signup',
@@ -15,9 +15,18 @@ export class SignupComponent implements OnInit {
   display: boolean = false;
   userMessage: String = "";
   validated: boolean = false;
-  constructor(private api: RegisterUserService, private router:Router) { }
+  constructor(private api: RegisterUserService, private router:Router, private flashMessage:FlashMessagesService) { }
   onRegisterSubmit(){
     console.log(this.user);
+    if(this.user.firstName == undefined || this.user.lastName == undefined || this.user.userAddress == undefined || 
+      this.user.userCity == undefined || this.user.userContactNo == undefined || this.user.userDOB == undefined || 
+      this.user.userEmailId == undefined || this.user.userName == undefined || this.user.userPassword == undefined ||
+      this.user.userPinCode == undefined ){
+        this.flashMessage.show("Please fill in all the details", { cssClass: 'alert-danger', timeout: 3000});
+      }
+    else if(!this.validateEmail(this.user.userEmailId)){
+      this.flashMessage.show("Please fill in a valid Email Id", { cssClass: 'alert-danger', timeout: 3000});
+    }
     
   }
   showDialog() {
