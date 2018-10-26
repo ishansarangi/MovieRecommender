@@ -31,59 +31,7 @@ export class SignupComponent implements OnInit {
   }
   showDialog() {
     console.log(this.userMessage);
-    
-    this.display = false;
-    this.userMessage = "";
-    if (this.user.userContactNo.length != 10) {
-      this.display = true;
-      this.userMessage = "Please enter a 10 digit Mobile Number!";
-      console.log("mobile");
 
-    }
-    else if (this.user.firstName.length == 0) {
-
-      this.display = true;
-      this.userMessage = "Please enter a valid FirstName!";
-      console.log("fn");
-    }
-
-    else if (this.user.lastName.length == 0) {
-
-      this.display = true;
-      this.userMessage = "Please enter a valid LastName!";
-      console.log("ln");
-    }
-
-    else if (this.user.userName.length == 0) {
-
-      this.display = true;
-      this.userMessage = "Please enter a valid UserName!";
-      console.log("un");
-    }
-
-    else if (!this.validateEmail(this.user.userEmailId) || this.user.userEmailId.length == 0) {
-
-      this.display = true;
-      this.userMessage = "Please enter a valid email!";
-      console.log("mid");
-    }
-
-    else if (this.user.userPassword.length == 0) {
-      this.display = true;
-      this.userMessage = "Please enter a valid Password!";
-      console.log("pwd");
-    } 
-
-    //TODO: Make date comparison for age and empty date
-
-    // else 
-    // if (this.user.userDOB.) {
-
-    //   this.display = true;
-    //   this.userMessage = "Please enter a valid Date Of Birth!";
-    //   console.log("dob");
-    // }
-    else {
       this.api.registerUser(this.user).subscribe(
         response => {
           if (response.success){
@@ -102,7 +50,6 @@ export class SignupComponent implements OnInit {
           this.userMessage = "Server error: Registration failed!";
         }
       )
-    }
   }
   
   ngOnInit() {
