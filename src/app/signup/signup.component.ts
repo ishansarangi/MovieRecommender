@@ -13,7 +13,6 @@ styleUrls: ['./signup.component.css']
 export class SignupComponent implements OnInit {
   user: User = new User();
       
-  display: boolean = false;
   userMessage: String = "";
   validated: boolean = false;
       
@@ -26,38 +25,37 @@ export class SignupComponent implements OnInit {
           this.user.userEmailId == undefined || this.user.userName == undefined || this.user.userPassword == undefined ||
           this.user.userPinCode == undefined ){
           this.flashMessage.show("Please fill in all the details", { cssClass: 'alert-danger'});
-      }
-      
-      else if(!this.validateEmail(this.user.userEmailId)){
-          this.flashMessage.show("Please fill in a valid Email Id", { cssClass: 'alert-danger'});
-      }
-      else if(CustomValidator.phoneValidator(this.user.userContactNo) == false){
-          this.flashMessage.show("Please fill in a valid mobile number", { cssClass: 'alert-danger'});
-      }
-      
-  }
 
-  showDialog() {
-      console.log(this.userMessage);
+      } else if(!CustomValidator.validateEmail(this.user.userEmailId)){
+          this.flashMessage.show("Please fill in a valid Email Id", { cssClass: 'alert-danger'});
+
+      } else if(!CustomValidator.phoneValidator(this.user.userContactNo)){
+          this.flashMessage.show("Please fill in a valid mobile number", { cssClass: 'alert-danger'});
+
+      }
       
-      this.api.registerUser(this.user).subscribe(
-                                                  response => {
-                                                      if (response.success){
-                                                          console.log(response);
-                                                          localStorage.setItem('currentUser', this.user.userName);
-                                                          console.log(localStorage.getItem('currentUser'));
-                                                          this.router.navigateByUrl('/home');
-                                                      }
-                                                      
-                                                      else{
-                                                          console.log(response);
-                                                      }
-                                                  },
-                                                  responseError => {
-                                                      this.display = true;
-                                                      this.userMessage = "Server error: Registration failed!";
-                                                  }
-                                                  )
+      else {
+        this.api.registerUser(this.user).subscribe(
+            response => {
+              if (response.success){
+                console.log(response);
+                localStorage.setItem('currentUser', this.user.userName);
+                console.log(localStorage.getItem('currentUser'));
+                this.router.navigateByUrl('/home');
+
+              } else {
+                console.log(response);
+                this.flashMessage.show(response.errorReason, { cssClass: 'alert-danger'});
+
+              }
+            },
+            responseError => {
+              this.flashMessage.show("Server error: Registration failed!", { cssClass: 'alert-danger'});
+              console.log("Server error: Registration failed!");
+            }
+          )
+      }
+      
   }
 
   ngOnInit() {
