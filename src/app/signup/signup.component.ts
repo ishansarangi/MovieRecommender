@@ -32,9 +32,10 @@ export class SignupComponent implements OnInit {
       } else if(!CustomValidator.phoneValidator(this.user.userContactNo)){
           this.flashMessage.show("Please fill in a valid mobile number", { cssClass: 'alert-danger'});
 
-      }
-      
-      else {
+      } else if(!CustomValidator.passwordValidator(this.user.userPassword)){
+        this.flashMessage.show("Please fill in a valid password having a minimum of 8 characters, at least 1 capital and small letter and at least 1 numeric and a special character", { cssClass: 'alert-danger'});
+
+      } else {
         this.api.registerUser(this.user).subscribe(
             response => {
               if (response.success){
