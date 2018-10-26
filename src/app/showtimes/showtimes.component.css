@@ -1,8 +1,8 @@
 :host >>>  .ui-card-body{
-height:16.5em;
+height:15em;
 width:100%;
-padding-top:2em;
-padding-left:2em;
+padding-top:1.5em;
+padding-left:1.5em;
 padding-bottom: 0.2em;
 }
 :host >>>  .ui-corner-all{
@@ -11,7 +11,7 @@ padding-bottom: 0.2em;
 .poster{
     background-image: url("http://image.tmdb.org/t/p/w154/bURIWlkMbzT8RdpemzCmQECo2Uh.jpg");
     background-repeat: no-repeat;
-    background-size: 10em 12em;
+    background-size: 8em 12em;
     padding: 0;
     width:50em;
     height:12em;

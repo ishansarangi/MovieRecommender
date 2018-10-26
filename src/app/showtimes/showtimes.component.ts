@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ShowtimesComponent implements OnInit {
   moviePoster:String;
+  movieName:String;
   movieStyle = {
     
     'width': '60%',
@@ -17,6 +18,7 @@ export class ShowtimesComponent implements OnInit {
 
   ngOnInit() {
     this.moviePoster = "http://image.tmdb.org/t/p/w154/bURIWlkMbzT8RdpemzCmQECo2Uh.jpg";
+    this.movieName = "Venom";
   }
 
 }
