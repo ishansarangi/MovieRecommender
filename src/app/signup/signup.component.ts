@@ -64,7 +64,7 @@ export class SignupComponent implements OnInit {
 
   
 
-  keyPressForMobile(event: any) {
+  keyPressForNumbers(event: any) {
       const pattern = /[0-9\+\-\ ]/;
       let inputChar = String.fromCharCode(event.charCode);
       
