@@ -1,15 +1,16 @@
 export class CustomValidator {
     
     // Validates user phone numbers
-    static phoneValidator(number): boolean {
-        if(number.value.length != 10){
-            return false;
-        }
-        const PHONE_REGEXP = /^[0-9]{10,10}$/;
-        if (PHONE_REGEXP.test(number.value)) {
-            return false;
-        }
-        return true
+    static phoneValidator(number) {
+        const PHONE_REGEXP = /^\s*(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?: *x(\d+))?\s*$$/;
+        return PHONE_REGEXP.test(number);
     }
     
+    // Validates password
+    static validateEmail(email) {
+        const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(String(email).toLowerCase());
+    }
+  
+
 }
