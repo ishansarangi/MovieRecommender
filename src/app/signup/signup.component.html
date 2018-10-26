@@ -32,7 +32,7 @@
         </div>
         <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
           <label>Mobile</label>
-          <input type="text" minlength="10" maxlength="10" (keypress)="keyPressForMobile($event)" [(ngModel)]="user.userContactNo" name="mobile" class="form-control">
+          <input type="text" minlength="10" maxlength="10" (keypress)="keyPressForNumbers($event)" [(ngModel)]="user.userContactNo" name="mobile" class="form-control">
         </div>
       </div>
       <div class="row">
@@ -56,7 +56,7 @@
         </div>
         <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4">
           <label>Zip</label>
-          <input type="text" [(ngModel)]="user.userPinCode" name="zip" class="form-control">
+          <input type="text" minlength="5" maxlength="5" (keypress)="keyPressForNumbers($event)"[(ngModel)]="user.userPinCode" name="zip" class="form-control">
         </div>
       </div>
       <div class="row">
