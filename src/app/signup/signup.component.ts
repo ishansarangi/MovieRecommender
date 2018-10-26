@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../model/user';
 import { RegisterUserService } from '../services/register-user.service';
 import { Router } from '@angular/router';
-
+import { FlashMessagesService } from 'angular2-flash-messages'
 
 @Component({
   selector: 'app-signup',
@@ -15,66 +15,23 @@ export class SignupComponent implements OnInit {
   display: boolean = false;
   userMessage: String = "";
   validated: boolean = false;
-  constructor(private api: RegisterUserService, private router:Router) { }
+  constructor(private api: RegisterUserService, private router:Router, private flashMessage:FlashMessagesService) { }
   onRegisterSubmit(){
     console.log(this.user);
+    if(this.user.firstName == undefined || this.user.lastName == undefined || this.user.userAddress == undefined || 
+      this.user.userCity == undefined || this.user.userContactNo == undefined || this.user.userDOB == undefined || 
+      this.user.userEmailId == undefined || this.user.userName == undefined || this.user.userPassword == undefined ||
+      this.user.userPinCode == undefined ){
+        this.flashMessage.show("Please fill in all the details", { cssClass: 'alert-danger', timeout: 3000});
+      }
+    else if(!this.validateEmail(this.user.userEmailId)){
+      this.flashMessage.show("Please fill in a valid Email Id", { cssClass: 'alert-danger', timeout: 3000});
+    }
     
   }
   showDialog() {
     console.log(this.userMessage);
-    
-    this.display = false;
-    this.userMessage = "";
-    if (this.user.userContactNo.length != 10) {
-      this.display = true;
-      this.userMessage = "Please enter a 10 digit Mobile Number!";
-      console.log("mobile");
 
-    }
-    else if (this.user.firstName.length == 0) {
-
-      this.display = true;
-      this.userMessage = "Please enter a valid FirstName!";
-      console.log("fn");
-    }
-
-    else if (this.user.lastName.length == 0) {
-
-      this.display = true;
-      this.userMessage = "Please enter a valid LastName!";
-      console.log("ln");
-    }
-
-    else if (this.user.userName.length == 0) {
-
-      this.display = true;
-      this.userMessage = "Please enter a valid UserName!";
-      console.log("un");
-    }
-
-    else if (!this.validateEmail(this.user.userEmailId) || this.user.userEmailId.length == 0) {
-
-      this.display = true;
-      this.userMessage = "Please enter a valid email!";
-      console.log("mid");
-    }
-
-    else if (this.user.userPassword.length == 0) {
-      this.display = true;
-      this.userMessage = "Please enter a valid Password!";
-      console.log("pwd");
-    } 
-
-    //TODO: Make date comparison for age and empty date
-
-    // else 
-    // if (this.user.userDOB.) {
-
-    //   this.display = true;
-    //   this.userMessage = "Please enter a valid Date Of Birth!";
-    //   console.log("dob");
-    // }
-    else {
       this.api.registerUser(this.user).subscribe(
         response => {
           if (response.success){
@@ -93,7 +50,6 @@ export class SignupComponent implements OnInit {
           this.userMessage = "Server error: Registration failed!";
         }
       )
-    }
   }
   
   ngOnInit() {

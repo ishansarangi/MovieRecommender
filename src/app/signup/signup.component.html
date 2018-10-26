@@ -1,8 +1,7 @@
 <form (submit)="onRegisterSubmit()">
     <div class="form-group">
         <div class="container-fluid">
-            <div class="row">
-            </div>
+            <flash-messages></flash-messages>
             <div class="row">
                 <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4">
                     <label>First Name</label>
@@ -62,7 +61,7 @@
             </div>
             <div class="row">
                 <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6" style="padding-left:15em;padding-top:1em;">
-                    <input type="submit" class="btn btn-primary button1" style="width: 20em;height: 3em;" value="Submit">
+                    <input type="submit" click="onRegisterSubmit()" class="btn btn-primary button1" style="width: 20em;height: 3em;" value="Submit">
                 </div>
             </div>
         </div>

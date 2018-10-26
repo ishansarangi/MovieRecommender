@@ -24,6 +24,7 @@ import { HttpClientModule } from '@angular/common/http';
 import {CardModule} from 'primeng/card';
 import {CarouselModule} from 'primeng/carousel';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FlashMessagesModule } from 'angular2-flash-messages';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -59,6 +60,7 @@ const routes: Routes = [
      CardModule,
      CarouselModule,
      NgbModule,
+     FlashMessagesModule.forRoot(),
      RouterModule.forRoot(routes,{onSameUrlNavigation: 'reload'}) 
   ],
   providers: [],

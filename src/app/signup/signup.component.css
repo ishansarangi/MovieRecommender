@@ -14,6 +14,11 @@ label{
     border-radius: 4px;
     font-size: 1em;
 }
+.alert-danger {
+    color: #fcfcfc;
+    background-color: #aa3d3d;
+    border-color: #883442;
+  }
 .row{
     padding-top:1.5em;
 }
