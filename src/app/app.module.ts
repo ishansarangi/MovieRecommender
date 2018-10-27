@@ -26,6 +26,8 @@ import { CarouselModule } from 'primeng/carousel';
 import { ShowtimesComponent } from './showtimes/showtimes.component';
 import { DataViewModule } from 'primeng/dataview';
 import { CookieService } from 'ngx-cookie-service';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FlashMessagesModule } from 'angular2-flash-messages';
 const routes: Routes = [
   { path: '', component: LoginComponent },
   {
@@ -55,21 +57,23 @@ const routes: Routes = [
     ShowtimesComponent
   ],
   imports: [
-    BrowserModule,
-    FormsModule,
-    MenubarModule,
-    BrowserAnimationsModule,
-    ButtonModule,
-    InputTextModule,
-    DialogModule,
-    PasswordModule,
-    CalendarModule,
-    KeyFilterModule,
-    HttpClientModule,
-    CardModule,
-    CarouselModule,
-    DataViewModule,
-    RouterModule.forRoot(routes, { onSameUrlNavigation: 'reload' })
+     BrowserModule,
+     FormsModule, 
+     CalendarModule,
+     MenubarModule,
+     BrowserAnimationsModule,
+     ButtonModule,
+     InputTextModule,
+     DialogModule,
+     PasswordModule,
+     DataViewModule
+     KeyFilterModule,
+     HttpClientModule,
+     CardModule,
+     CarouselModule,
+     NgbModule,
+     FlashMessagesModule.forRoot(),
+     RouterModule.forRoot(routes,{onSameUrlNavigation: 'reload'}) 
   ],
   providers: [CookieService],
   bootstrap: [AppComponent]
