@@ -25,7 +25,6 @@ import {CardModule} from 'primeng/card';
 import {CarouselModule} from 'primeng/carousel';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FlashMessagesModule } from 'angular2-flash-messages';
-
 const routes: Routes = [
   { path: '', component: LoginComponent },
   { path: '', children: [
@@ -48,13 +47,14 @@ const routes: Routes = [
   imports: [
     BrowserModule,
      FormsModule, 
+     CalendarModule,
      MenubarModule,
      BrowserAnimationsModule,
      ButtonModule,
      InputTextModule,
      DialogModule,
      PasswordModule,
-     CalendarModule,
+
      KeyFilterModule,
      HttpClientModule,
      CardModule,
