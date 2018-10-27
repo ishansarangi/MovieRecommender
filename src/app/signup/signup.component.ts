@@ -19,6 +19,7 @@ export class SignupComponent implements OnInit {
   constructor(private api: RegisterUserService, private router:Router, private flashMessage:FlashMessagesService) { }
 
   onRegisterSubmit(){
+   // 
       console.log(this.user);
       if(this.user.firstName == undefined || this.user.lastName == undefined || this.user.userAddress == undefined ||
           this.user.userCity == undefined || this.user.userContactNo == undefined || this.user.userDOB == undefined ||
@@ -36,6 +37,7 @@ export class SignupComponent implements OnInit {
         this.flashMessage.show("Please fill in a valid password having a minimum of 8 characters, at least 1 capital and small letter and at least 1 numeric and a special character", { cssClass: 'alert-danger'});
 
       } else {
+        console.log(this.user.userDOB.getMonth());//+  "-" + this.user.userDOB.getDate() + "-" + this.user.userDOB.getFullYear());
         this.api.registerUser(this.user).subscribe(
             response => {
               if (response.success){
