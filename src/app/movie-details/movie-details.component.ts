@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { GetMoviesService } from "../get-movies.service";
 import { MoviesDetails } from "./movie";
 import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 @Component({
   selector: 'app-movie-details',
   templateUrl: './movie-details.component.html',
@@ -10,12 +11,12 @@ import { Router } from '@angular/router';
 export class MovieDetailsComponent implements OnInit {
 
   movies:MoviesDetails[];
-  constructor(private getMovies: GetMoviesService,private router: Router) { 
+  constructor(private getMovies: GetMoviesService,private router: Router, private cookieService: CookieService ) { 
     console.log("movieName");
     this.getMovies.fetchMovies()
                   .subscribe(
                     r=>{
-                      this.movies = r["movies"];
+                      this.movies = r["results"];
                       console.log(this.movies);
                     }
                   )
@@ -24,9 +25,10 @@ export class MovieDetailsComponent implements OnInit {
   hasError: boolean;
   ngOnInit() {
   }
-  routeMovie(id){
-    console.log(id);
-    //Call the Service to fetch the showtimes and other movie details and store it in the local storage after clearing the cookies
+  routeMovie(movieName,poster){
+    this.cookieService.set("moviePoster",poster);
+    this.cookieService.set("movieName",movieName);
+    console.log(movieName);
     this.router.navigateByUrl('/home/showtimes');
   }
 }

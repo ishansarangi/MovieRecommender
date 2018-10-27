@@ -25,7 +25,7 @@ import { CardModule } from 'primeng/card';
 import { CarouselModule } from 'primeng/carousel';
 import { ShowtimesComponent } from './showtimes/showtimes.component';
 import { DataViewModule } from 'primeng/dataview';
-
+import { CookieService } from 'ngx-cookie-service';
 const routes: Routes = [
   { path: '', component: LoginComponent },
   {
@@ -71,7 +71,7 @@ const routes: Routes = [
     DataViewModule,
     RouterModule.forRoot(routes, { onSameUrlNavigation: 'reload' })
   ],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

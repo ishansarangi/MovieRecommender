@@ -9,13 +9,7 @@ padding-bottom: 0.2em;
     border-radius:10px;
 }
 .poster{
-    background-image: url("http://image.tmdb.org/t/p/w154/bURIWlkMbzT8RdpemzCmQECo2Uh.jpg");
-    background-repeat: no-repeat;
-    background-size: 8em 12em;
-    padding: 0;
-    width:50em;
-    height:12em;
-    border-radius:5px;
+   
 }
 :host >>>  .ui-card-content{
     margin-bottom: 0em;

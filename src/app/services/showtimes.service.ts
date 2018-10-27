@@ -13,8 +13,9 @@ export class ShowtimesService {
 
   constructor(private http: HttpClient) { }
 
-  fetchShowtimes( movieId){
-    this.endPoint = this.endPoint.concat("/") + movieId;
-    return this.http.get(this.endPoint,this.httpOptions);
+  fetchShowtimes( movieName){
+    console.log("Fetch" + movieName);
+    this.endPoint = this.endPoint.concat("?movieName=") + movieName;
+    return this.http.post(this.endPoint,this.httpOptions);
   }
 }
