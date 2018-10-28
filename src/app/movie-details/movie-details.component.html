@@ -1,28 +1,63 @@
-<div class="container-fluid" style="padding-top:15%;">
+<div class="container-fluid" style="padding-top:5%;height: 100%;">
     <div class="row">
         <div class="col-sm-2 col-md-2 col-lg-3 col-xl-3">
 
         </div>
         <div class="col-sm-8 col-md-8 col-lg-6 col-xl-6">
-                <p-carousel numVisible="5" pageLinks = "10" circular = "true" firstVisible = "1" headerText="Now Playing" [value]="movies">
-                        <ng-template let-movie pTemplate="item">
-                            <div class="ui-grid ui-grid-responsive">
-                                <div class="ui-grid-row">
-                                    <div class="ui-grid-col-12">
-                                        <img src={{movie.poster_image_thumbnail}} width="150">
-                                    </div>
-                                </div>
-                                
+            <p-carousel numVisible="5" pageLinks="10" circular="true" firstVisible="1" headerText="Now Playing" [value]="movies">
+                <ng-template let-movie pTemplate="item">
+                    <div class="ui-grid ui-grid-responsive">
+                        <div class="ui-grid-row">
+                            <div class="ui-grid-col-12">
+                                <img src={{movie.poster_path}} (click)='routeMovie(movie.title,movie.poster_path,movie.overview)'
+                                    width="150">
                             </div>
-                            <div class="ui-grid-row">
-                                <div class="ui-grid-col-6">
-                                    <span id = "movieTitle">
-                                            {{movie.title}}
-                                    </span>
-                                </div>
+                        </div>
+
+                    </div>
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-6">
+                            <span id="movieTitle">
+                                {{movie.title}}
+                            </span>
+                        </div>
+                    </div>
+                </ng-template>
+            </p-carousel>
+        </div>
+        <div class="col-sm-2 col-md-2 col-lg-6 col-xl-6">
+
+        </div>
+    </div>
+    <div class="row" style="padding-top: 10em;">
+        <div class="col-sm-2 col-md-2 col-lg-3 col-xl-3">
+
+        </div>
+        <div class="col-sm-8 col-md-8 col-lg-6 col-xl-6">
+            <p-carousel numVisible="5" pageLinks="10" circular="true" firstVisible="1" headerText="Featured Trailers"
+                [value]="movies">
+                <ng-template let-movie pTemplate="item">
+                    <div class="ui-grid ui-grid-responsive">
+                        <div class="ui-grid-row">
+                            <div class="ui-grid-col-12">
+                                <span >
+                                    <button class="fa fa-play" style="height:10px;width:10px;">
+
+                                    </button>
+                                </span>
                             </div>
-                        </ng-template>
-                    </p-carousel>
+                        </div>
+
+                    </div>
+                    <div class="ui-grid-row">
+                        <div class="ui-grid-col-6">
+                            <span id="movieTitle">
+                                {{movie.title}}
+                            </span>
+                        </div>
+                    </div>
+                </ng-template>
+            </p-carousel>
         </div>
         <div class="col-sm-2 col-md-2 col-lg-6 col-xl-6">
 

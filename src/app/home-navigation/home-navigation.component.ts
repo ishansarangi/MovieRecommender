@@ -38,8 +38,8 @@ export class HomeNavigationComponent implements OnInit {
   //Clear the session
   logOut(){
     localStorage.removeItem('currentUser');
+    localStorage.removeItem('MYSESSIONID');
     this.router.navigateByUrl('/');
-
   }
 
 }

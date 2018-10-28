@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {LoginService} from '../login.service';
 import {Router} from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-signin',
@@ -13,7 +14,7 @@ export class SigninComponent implements OnInit {
   errorMessage: string;
   hasError: boolean;
 
-  constructor(private api: LoginService, private router: Router) { }
+  constructor(private api: LoginService, private router: Router, private cookieService:CookieService) { }
 
   ngOnInit() {
   }
@@ -35,7 +36,11 @@ export class SigninComponent implements OnInit {
               console.log(r)
               localStorage.setItem('currentUser', this.username);
               console.log(localStorage.getItem('currentUser'));
-              this.router.navigateByUrl('/home');
+              //store MYSESSIONID
+              localStorage.setItem('MYSESSIONID', this.cookieService.get("MYSESSIONID"));
+              console.log('Mysess'+ localStorage.getItem('MYSESSIONID'));
+              
+              this.router.navigateByUrl('/home/movies');
             } else {
               alert(r.errorReason);
             }
