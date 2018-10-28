@@ -66,7 +66,7 @@ const routes: Routes = [
      InputTextModule,
      DialogModule,
      PasswordModule,
-     DataViewModule
+     DataViewModule,
      KeyFilterModule,
      HttpClientModule,
      CardModule,
