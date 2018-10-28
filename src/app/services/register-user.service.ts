@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { Login } from '../login';
+import { environment } from 'src/environments/environment';
 
 
 @Injectable({
@@ -20,6 +21,6 @@ export class RegisterUserService {
 
     var headers = new HttpHeaders();
     headers.set('Content-Type', 'application/json');
-    return this.http.post<Login>('http://localhost:8081/register/user/newUser', user, this.httpOptions);
+    return this.http.post<Login>(environment.baseUrl + 'register/user/newUser', user, this.httpOptions);
   }
 }
