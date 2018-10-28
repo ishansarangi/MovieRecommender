@@ -5,6 +5,7 @@ import {User} from '../model/user';
 import { HttpParams } from '@angular/common/http';
 import { HttpParamsOptions } from '@angular/common/http/src/params';
 import { Login } from '../login';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +19,7 @@ export class ViewProfileService {
 
   fetchUserDetails():Observable<User>{
     let userName = localStorage.getItem('currentUser'); 
-    return this.http.get<User>('http://localhost:8081/profile/fetch/'+userName, this.httpOptions);
+    return this.http.get<User>(environment.baseUrl + 'profile/fetch/'+userName, this.httpOptions);
   }
 
   editProfileWith(user: User):Observable<Login>{
@@ -26,6 +27,6 @@ export class ViewProfileService {
     var headers = new HttpHeaders();
     headers.set('Content-Type', 'application/json');
     console.log(user);
-    return this.http.post<Login>('http://localhost:8081/register/user/editUser', user, this.httpOptions);
+    return this.http.post<Login>(environment.baseUrl + 'register/user/editUser', user, this.httpOptions);
   }
 }

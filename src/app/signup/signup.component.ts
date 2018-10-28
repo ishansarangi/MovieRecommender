@@ -4,6 +4,7 @@ import { RegisterUserService } from '../services/register-user.service';
 import { Router } from '@angular/router';
 import { FlashMessagesService } from 'angular2-flash-messages'
 import { CustomValidator } from '../_validation';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
 selector: 'app-signup',
@@ -16,7 +17,7 @@ export class SignupComponent implements OnInit {
   userMessage: String = "";
   validated: boolean = false;
       
-  constructor(private api: RegisterUserService, private router:Router, private flashMessage:FlashMessagesService) { }
+  constructor(private api: RegisterUserService, private router:Router, private flashMessage:FlashMessagesService, private cookieService:CookieService) { }
 
   onRegisterSubmit(){
    // 
@@ -44,6 +45,11 @@ export class SignupComponent implements OnInit {
                 console.log(response);
                 localStorage.setItem('currentUser', this.user.userName);
                 console.log(localStorage.getItem('currentUser'));
+
+                //store MYSESSIONID
+                localStorage.setItem('MYSESSIONID', this.cookieService.get("MYSESSIONID"));
+                console.log(localStorage.getItem('MYSESSIONID'));
+
                 this.router.navigateByUrl('/home/movies');
 
               } else {

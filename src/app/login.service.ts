@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpParams, HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { Login } from './login';
+import { environment } from 'src/environments/environment';
 
 
 @Injectable({
@@ -9,7 +10,7 @@ import { Login } from './login';
 })
 export class LoginService {
 
-  endpoint = 'http://localhost:8081/login';
+  endpoint = environment.baseUrl + 'login';
 
   username:string;
   password:string;
