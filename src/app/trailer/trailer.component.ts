@@ -11,10 +11,12 @@ export class TrailerComponent implements OnInit {
   trailer: SafeValue;
   constructor(private sanitizer:DomSanitizer,private cookieService: CookieService) { 
     console.log("Iframe"+this.cookieService.get('trailerUrl'));
+    console.log(this.trailer);
     this.trailer = this.sanitizer.bypassSecurityTrustResourceUrl(this.cookieService.get('trailerUrl'));
   }
 
   ngOnInit() {
+    this.trailer = this.sanitizer.bypassSecurityTrustResourceUrl(this.cookieService.get('trailerUrl'));
   }
 
 }

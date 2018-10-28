@@ -39,6 +39,11 @@ export class MovieDetailsComponent implements OnInit {
   ngOnInit() {
     this.displayTrailer = false;
   }
+  closeDialog(){
+    this.cookieService.set("trailerUrl", "");
+    console.log("CLose");
+    this.displayTrailer = false;
+  }
   routeMovie(movieName, poster,movieDesc) {
     this.cookieService.set("moviePoster", poster);
     this.cookieService.set("movieName", movieName);

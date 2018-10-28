@@ -62,6 +62,6 @@
     </div>
 </div>
 
-<p-dialog header="Movie Trailer" [(visible)]="displayTrailer" [modal]=true [width]="700" [height]="700" [minWidth]="200" [minY]="70">
+<p-dialog header="Movie Trailer" onHide="closeDialog()" [(visible)]="displayTrailer" [modal]=true [width]="700" [height]="700" [minWidth]="200" [minY]="70">
     <app-trailer></app-trailer>
 </p-dialog>
