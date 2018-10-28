@@ -1,3 +1,4 @@
+import { DomSanitizer,SafeValue } from "@angular/platform-browser";
 export class MoviesDetails {
     vote: number;
     id: number;
@@ -14,5 +15,7 @@ export class MoviesDetails {
     overview: String;
     release_date: String;
     name: String;
-    trailerUrl:String;
+    site:String;
+    trailerId:string;
+    trailer:SafeValue;
 }
