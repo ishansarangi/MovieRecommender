@@ -13,4 +13,6 @@ export class MoviesDetails {
     adult: boolean;
     overview: String;
     release_date: String;
+    name: String;
+    trailerUrl:String;
 }
