@@ -40,11 +40,8 @@
                     <div class="ui-grid ui-grid-responsive">
                         <div class="ui-grid-row">
                             <div class="ui-grid-col-12">
-                                <span >
-                                    <button class="fa fa-play" style="height:10px;width:10px;">
-
-                                    </button>
-                                </span>
+                                    <img src={{movie.poster_path}} (click)='showTrailer(movie.trailerId)'
+                                    width="150">
                             </div>
                         </div>
 
@@ -64,3 +61,7 @@
         </div>
     </div>
 </div>
+
+<p-dialog header="Movie Trailer" onHide="closeDialog()" [(visible)]="displayTrailer" [modal]=true [width]="700" [height]="700" [minWidth]="200" [minY]="70">
+    <app-trailer></app-trailer>
+</p-dialog>

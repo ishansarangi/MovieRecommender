@@ -28,6 +28,8 @@ import { DataViewModule } from 'primeng/dataview';
 import { CookieService } from 'ngx-cookie-service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FlashMessagesModule } from 'angular2-flash-messages';
+import { TrailerComponent } from './trailer/trailer.component';
+import { YoutubePlayerModule } from 'ngx-youtube-player';
 const routes: Routes = [
   { path: '', component: LoginComponent },
   {
@@ -54,7 +56,8 @@ const routes: Routes = [
     SigninComponent,
     HomeNavigationComponent,
     UserProfileComponent,
-    ShowtimesComponent
+    ShowtimesComponent,
+    TrailerComponent
   ],
   imports: [
      BrowserModule,
@@ -64,6 +67,7 @@ const routes: Routes = [
      BrowserAnimationsModule,
      ButtonModule,
      InputTextModule,
+     YoutubePlayerModule,
      DialogModule,
      PasswordModule,
      DataViewModule,

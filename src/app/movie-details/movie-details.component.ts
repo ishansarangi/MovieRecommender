@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component,  OnInit } from '@angular/core';
+import { DomSanitizer,SafeValue } from "@angular/platform-browser";
 import { GetMoviesService } from "../get-movies.service";
 import { MoviesDetails } from "./movie";
 import { Router } from '@angular/router';
@@ -13,7 +14,8 @@ export class MovieDetailsComponent implements OnInit {
 
   movies: MoviesDetails[];
   trailersObj:any;
-  constructor(private getMovies: GetMoviesService, private getTrailers: FetchtrailersService,
+  displayTrailer:boolean;
+  constructor(private sanitizer:DomSanitizer,private getMovies: GetMoviesService, private getTrailers: FetchtrailersService,
     private router: Router, private cookieService: CookieService) {
     console.log("movieName");
     this.getMovies.fetchMovies()
@@ -21,18 +23,26 @@ export class MovieDetailsComponent implements OnInit {
         r => {
           this.movies = r["results"];
           console.log(this.movies);
-        }
-      )
-    this.getTrailers.fetchTrailers()
-      .subscribe(
-        r => {
-          console.log(r);
+          for(var i =0;i<this.movies.length;i++){
+            if(this.movies[i].site!=null){
+              this.movies[i].trailerId = this.movies[i].site.substr(0,24) + "embed/" + this.movies[i].site.substr(32);
+              console.log(this.movies[i].trailerId);
+              
+            }
+            
+          }
         }
       )
   }
   errorMessage: string;
   hasError: boolean;
   ngOnInit() {
+    this.displayTrailer = false;
+  }
+  closeDialog(){
+    this.cookieService.set("trailerUrl", "");
+    console.log("CLose");
+    this.displayTrailer = false;
   }
   routeMovie(movieName, poster,movieDesc) {
     this.cookieService.set("moviePoster", poster);
@@ -40,5 +50,14 @@ export class MovieDetailsComponent implements OnInit {
     this.cookieService.set("movieDesc", movieDesc);
     console.log("From Cookies- " + this.cookieService.get('movieName'));
     this.router.navigateByUrl('/home/showtimes');
+  }
+  showTrailer(url){
+    console.log("TrailrId: "+url);
+    this.cookieService.set("trailerUrl", url);
+    console.log("trailerCookieUrl", this.cookieService.get("trailerUrl"));
+    this.displayTrailer = true;
+  }
+  onStateChange(event) {
+    console.log('player state', event.data);
   }
 }
