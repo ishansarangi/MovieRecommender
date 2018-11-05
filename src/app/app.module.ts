@@ -38,17 +38,24 @@ import { JwtInterceptor, ErrorInterceptor } from './_helpers';
 
 
 const routes: Routes = [
-  { path: '', component: LoginComponent, canLoad: [AuthGuard]},
+  { path: '', component: LoginComponent},
   {
     path: '', children: [
       {
         path: 'home', component: HomeComponent, children: [
           { path: 'movies', component: MovieDetailsComponent },
-          { path: 'showtimes', component: ShowtimesComponent }
+          { path: 'showtimes', component: ShowtimesComponent, canActivate: [AuthGuard] }
         ]
+      }, 
+      {
+        path: 'login', component: LoginComponent
       }
     ]
-  }
+  },
+
+      // otherwise redirect to home
+      { path: '**', redirectTo: '' }
+
 
 ];
 
@@ -89,7 +96,8 @@ const routes: Routes = [
      FlashMessagesModule.forRoot(),
      RouterModule.forRoot(routes,{onSameUrlNavigation: 'reload'}) 
   ],
-  providers: [CookieService,
+  providers: [
+    CookieService,
     AuthGuard,
     AlertService,
     AuthenticationService,
