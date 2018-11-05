@@ -62,6 +62,7 @@
     </div>
 </div>
 
-<p-dialog header="Movie Trailer" onHide="closeDialog()" [(visible)]="displayTrailer" [modal]=true [width]="700" [height]="700" [minWidth]="200" [minY]="70">
-    <app-trailer></app-trailer>
+<p-dialog  [(visible)]="displayTrailer" header="Movie Trailer" [width]="700" [height]="700" [minWidth]="200" [minY]="70">
+    <app-trailer *ngIf="displayTrailer" [trailerUrl]='trailer'></app-trailer>
 </p-dialog>
+
